@@ -5,6 +5,8 @@
 
 node_modules/
 
+.nyc_output/
+
 # Created by .ignore support plugin (hsz.mobi)
 ### Vim template
 # Swap
