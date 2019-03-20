@@ -23,7 +23,7 @@ if (!argv.file) {
 
 data
 .catch((issue) => { console.error(issue); process.exit(1); })
-.then((fileBuffer) => Promise.resolve(fileBuffer.toString('utf-8')))
+.then(async (fileBuffer) => fileBuffer.toString('utf-8'))
 .then((encodedData) => {
   if (argv.output) {
     fs.writeFile(argv.output, encodedData)
