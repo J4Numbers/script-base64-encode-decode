@@ -1,14 +1,15 @@
 const argv = require('minimist')(
     process.argv.slice(2),
     {
-      boolean: [
-          'file'
-      ],
-      default: {
-        file: false
+      alias: {
+        file: ['f'],
+        output: ['o', 'out']
       }
+      // file
+      // output
     }
   );
+const fs = require('fs').promises;
 const readline = require('readline');
 
 const getDataFromTerminal = async () => {
@@ -24,7 +25,9 @@ const getDataFromTerminal = async () => {
   });
 };
 
-const getDataFromFile = async () => {};
+const getDataFromFile = async () => {
+  return fs.readFile(argv.file);
+};
 
 let data;
 if (!argv.file) {
@@ -34,5 +37,6 @@ if (!argv.file) {
 }
 
 data
+  .catch((issue) => { console.error(issue); process.exit(1); })
   .then((fileBuffer) => Promise.resolve(fileBuffer.toString('base64')))
   .then((encodedData) => {console.log(encodedData); process.exit(0);});
