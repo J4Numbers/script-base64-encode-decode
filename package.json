@@ -1,6 +1,6 @@
 {
   "name": "script-b64-encoder",
-  "version": "1.0.0.SNAPSHOT",
+  "version": "1.0.0",
   "description": "A set of mini scripts that encode/decode base64 data",
   "main": "index.js",
   "bin": {
