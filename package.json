@@ -1,0 +1,20 @@
+{
+  "name": "script-b64-encoder",
+  "version": "1.0.0",
+  "description": "A set of mini scripts that encode/decode base64 data",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.ibm.com:Matthew-Ball/script-b64-encoder.git"
+  },
+  "keywords": [
+    "base64",
+    "encode",
+    "decode"
+  ],
+  "author": "Matthew D. Ball <matthew.ball@ibm.com>",
+  "license": "MIT"
+}
