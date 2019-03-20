@@ -5,8 +5,6 @@ const argv = require('minimist')(
         file: ['f'],
         output: ['o', 'out']
       }
-      // file
-      // output
     }
   );
 const fs = require('fs').promises;
@@ -39,4 +37,12 @@ if (!argv.file) {
 data
   .catch((issue) => { console.error(issue); process.exit(1); })
   .then((fileBuffer) => Promise.resolve(fileBuffer.toString('base64')))
-  .then((encodedData) => {console.log(encodedData); process.exit(0);});
+  .then((encodedData) => {
+    if (argv.output) {
+      fs.writeFile(argv.output, encodedData)
+        .then(() => process.exit(0));
+    } else {
+      console.log(encodedData);
+      process.exit(0);
+    }
+  });
