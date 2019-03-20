@@ -7,18 +7,15 @@ const argv = require('minimist')(
       }
     }
 );
-const fs = require('fs').promises;
 const { getDataFromTerminal } = require('../lib/terminal');
-
-const getDataFromFile = async () => {
-  return Buffer.from(await fs.readFile(argv.file, { encoding: 'utf-8' }), 'base64');
-};
+const { getDataFromFile, writeDataToFile } = require('../lib/file');
 
 let data;
 if (!argv.file) {
   data = getDataFromTerminal();
 } else {
-  data = getDataFromFile();
+  data = getDataFromFile(argv.file)
+    .then(async (fileBuffer) => Buffer.from(fileBuffer.toString(), 'base64'));
 }
 
 data
@@ -26,8 +23,8 @@ data
 .then(async (fileBuffer) => fileBuffer.toString('utf-8'))
 .then((encodedData) => {
   if (argv.output) {
-    fs.writeFile(argv.output, encodedData)
-    .then(() => process.exit(0));
+    writeDataToFile(argv.output, encodedData)
+      .then(() => process.exit(0));
   } else {
     console.log(encodedData);
     process.exit(0);
