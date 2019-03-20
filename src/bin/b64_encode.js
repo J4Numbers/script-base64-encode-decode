@@ -7,25 +7,8 @@ const argv = require('minimist')(
       }
     }
   );
-const { getDataFromTerminal } = require('../lib/terminal');
-const { getDataFromFile, writeDataToFile } = require('../lib/file');
+const b64Encode = require('../lib/encode');
 
-let data;
-if (!argv.file) {
-  data = getDataFromTerminal();
-} else {
-  data = getDataFromFile(argv.file);
-}
-
-data
-  .catch((issue) => { console.error(issue); process.exit(1); })
-  .then(async (fileBuffer) => fileBuffer.toString('base64'))
-  .then((encodedData) => {
-    if (argv.output) {
-      writeDataToFile(argv.output, encodedData)
-        .then(() => process.exit(0));
-    } else {
-      console.log(encodedData);
-      process.exit(0);
-    }
-  });
+b64Encode(argv)
+  .catch((error) => { console.error(error); process.exit(1); } )
+  .then(() => process.exit(0));
