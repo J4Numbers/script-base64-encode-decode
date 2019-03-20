@@ -19,14 +19,14 @@ if (!argv.file) {
 }
 
 data
-.catch((issue) => { console.error(issue); process.exit(1); })
-.then(async (fileBuffer) => fileBuffer.toString('utf-8'))
-.then((encodedData) => {
-  if (argv.output) {
-    writeDataToFile(argv.output, encodedData)
-      .then(() => process.exit(0));
-  } else {
-    console.log(encodedData);
-    process.exit(0);
-  }
-});
+  .catch((issue) => { console.error(issue); process.exit(1); })
+  .then(async (fileBuffer) => fileBuffer.toString('utf-8'))
+  .then((encodedData) => {
+    if (argv.output) {
+      writeDataToFile(argv.output, encodedData)
+        .then(() => process.exit(0));
+    } else {
+      console.log(encodedData);
+      process.exit(0);
+    }
+  });
