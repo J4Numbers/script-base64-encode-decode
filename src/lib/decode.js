@@ -12,9 +12,9 @@ const b64Decode = async (argv) => {
 
   return data
     .then(async (fileBuffer) => fileBuffer.toString('utf-8'))
-    .then((encodedData) => {
+    .then(async (encodedData) => {
       if (argv.output) {
-        writeDataToFile(argv.output, encodedData)
+        await writeDataToFile(argv.output, encodedData)
       } else {
         console.log(encodedData);
       }
