@@ -1,0 +1,33 @@
+{
+  "name": "script-b64-encoder",
+  "version": "1.0.0",
+  "description": "A set of mini scripts that encode/decode base64 data",
+  "main": "index.js",
+  "bin": {
+    "b64_encode": "src/bin/b64_encode.js",
+    "b64_decode": "src/bin/b64_decode.js"
+  },
+  "scripts": {
+    "test": "nyc mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.ibm.com:Matthew-Ball/script-b64-encoder.git"
+  },
+  "keywords": [
+    "base64",
+    "encode",
+    "decode"
+  ],
+  "author": "Matthew D. Ball <matthew.ball@ibm.com>",
+  "license": "MIT",
+  "dependencies": {
+    "minimist": "^1.2.0"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "mocha": "^6.0.2",
+    "nyc": "^13.3.0"
+  }
+}

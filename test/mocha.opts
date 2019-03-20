@@ -1,0 +1,4 @@
+--require test/helpers/setup.js
+--spec test/spec/src
+--recursive
+--exit
